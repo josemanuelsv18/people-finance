@@ -42,6 +42,3 @@ class Login:
     def db_login():
         #connect with the database to check if the user and password exist
         pass
-
-#obj_log = Login()
-#obj_log.interface_exe()

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <database>
+        <host>localhost</host>
+        <port>3306</port>
+        <username>peoplef_connect</username>
+        <password>P30pl3.123</password>
+        <dbname>people_finance</dbname>
+    </database>
+</config>

@@ -21,6 +21,11 @@ CREATE TABLE accounts(
     FOREIGN KEY (id_user) REFERENCES users(id_user)
 );
 
+CREATE TABLE category(
+	id_category INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL
+);
+
 CREATE TABLE transactions(
 	id_transaction INT PRIMARY KEY AUTO_INCREMENT,
     type ENUM('Income', 'Spending')NOT NULL,
@@ -33,10 +38,7 @@ CREATE TABLE transactions(
     FOREIGN KEY (id_category) REFERENCES category(id_category)
 );
 
-CREATE TABLE category(
-	id_category INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50) NOT NULL
-);
+
 
 CREATE TABLE budget(
 	id_budget INT PRIMARY KEY,

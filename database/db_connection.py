@@ -33,6 +33,3 @@ class DbConnector:
             if self.my_db.is_connected():
                 self.my_db.close()
                 print('MySql connection has been closed')
-
-obj_prueba = DbConnector()
-obj_prueba.connection_sql()

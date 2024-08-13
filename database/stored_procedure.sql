@@ -1,11 +1,14 @@
 USE people_finance;
 
-CREATE PROCEDURE InsertUser(
-	IN first_name VARCHAR(50),
-    IN surname VARCHAR(50),
-    IN email VARCHAR(100),
-    IN password VARCHAR(18)
+DELIMITER //
+CREATE PROCEDURE userRegister (
+	IN nombre VARCHAR(50),
+    IN apellido VARCHAR(50),
+    IN correo VARCHAR(100),
+    IN contrasena VARCHAR(50)
 )
-AS
+BEGIN
 	INSERT INTO users (name, surname, email, password, registry_date)
-    VALUES(first_name, surname, email, password, CURDATE());
+    VALUES (nombre, apellido, correo, contrasena, CURDATE());
+END //
+DELIMITER ;

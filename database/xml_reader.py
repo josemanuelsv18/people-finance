@@ -45,3 +45,7 @@ class XmlReader:
         self.password = root[0][3].text.encode('ascii')
         self.password = base64.b64decode(self.password)
         self.password = self.password.decode('ascii')
+
+        self.dbname = root[0][4].text.encode('ascii')
+        self.dbname = base64.b64decode(self.dbname)
+        self.dbname = self.dbname.decode('ascii')

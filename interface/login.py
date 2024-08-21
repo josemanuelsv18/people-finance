@@ -1,14 +1,14 @@
 #login page
 import customtkinter
 from interface import home
+from interface import interface_template
 
-class Login:
-    def __init__(self, frame):
-        self.root = customtkinter.CTk()
-        self.frame = frame
+class Login(interface_template):
+    
 
     #login interface
-    def interface_exe(self):
+    #def interface_exe(self):
+    #def in_exe(self):
         #clean frame
         for widget in self.frame.winfo_children():
             widget.destroy()

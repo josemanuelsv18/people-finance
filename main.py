@@ -15,7 +15,7 @@ class Main:
         customtkinter.set_appearance_mode("system")
         customtkinter.set_default_color_theme("green")
         #screen size
-        self.root.geometry("400x450")
+        self.root.geometry("450x550")
         #blank frame
         frame = customtkinter.CTkFrame(master=self.root)
         frame.pack(pady=20, padx=60,fill="both", expand=True)

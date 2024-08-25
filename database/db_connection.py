@@ -1,5 +1,5 @@
 import mysql.connector
-import xml_reader
+from database import xml_reader
 from mysql.connector import Error
 
 class DbConnector:

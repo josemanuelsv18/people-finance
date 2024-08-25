@@ -1,10 +1,11 @@
 import customtkinter
 from interface import login
+from interface import interface_template
+from interface import register
 
-class Home:
+class Home(interface_template.InterfaceTemplate):
     def __init__(self, frame):
-        self.root = customtkinter.CTk()
-        self.frame = frame
+        super().__init__(frame)
 
     #login interface
     def interface_exe(self):
@@ -26,5 +27,6 @@ class Home:
         obj_login = login.Login(self.frame)
         obj_login.interface_exe()
 
-    def bot_fnc():
-        print('boton presionado')
+    def bot_fnc(self):
+        obj_register = register.Register(self.frame)
+        obj_register.interface_exe()

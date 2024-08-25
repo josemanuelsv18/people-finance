@@ -1,14 +1,12 @@
 #login page
 import customtkinter
-from interface import home
 from interface import interface_template
 
-class Login(interface_template):
-    
-
+class Login(interface_template.InterfaceTemplate):
+    def __init__(self, frame):
+        super().__init__(frame)
     #login interface
-    #def interface_exe(self):
-    #def in_exe(self):
+    def interface_exe(self):
         #clean frame
         for widget in self.frame.winfo_children():
             widget.destroy()
@@ -32,14 +30,10 @@ class Login(interface_template):
         button = customtkinter.CTkButton(self.frame, text="Login", command=self.db_login)
         button.pack(pady=40, padx=20)
 
-        button_return = customtkinter.CTkButton(self.frame, text='return', command=self.home_return)
+        button_return = customtkinter.CTkButton(self.frame, text='Return', command=self.home_return)
         button_return.pack(pady=0,padx=20)
-
-    def home_return(self):
-        obj_home =  home.Home(self.frame)
-        obj_home.interface_exe()
 
     def db_login():
         #connect with the database to check if the user and password exist
-        
         pass
+    

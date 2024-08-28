@@ -2,6 +2,7 @@
 import customtkinter
 from interface import interface_template
 from backend import register_user
+from tkinter import messagebox
 
 class Register(interface_template.InterfaceTemplate):
     def __init__(self, frame):
@@ -47,4 +48,8 @@ class Register(interface_template.InterfaceTemplate):
     
     def db_register(self):
         obj_user_register = register_user.RegisterUser(self.name.get(), self.surname.get(), self.email.get(), self.password.get())
-        obj_user_register.create_new_user()
+        if obj_user_register.create_new_user():
+            messagebox.showinfo("People Finance","Your user has been created succesfully")
+            #From here user has to go to app homepage
+        else:
+            messagebox.showinfo("People Finance","Your user could not be created")

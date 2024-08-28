@@ -28,8 +28,11 @@ class DbConnector:
                 print('Failed to connect with the database')
         except:
             print("XML document couldn't be readed")
-        finally:
+        
+        #Closes connections in different class
+        
+        #finally:
             #close connection if open
-            if self.my_db.is_connected():
-                self.my_db.close()
-                print('MySql connection has been closed')
+        #    if self.my_db.is_connected():
+        #        self.my_db.close()
+        #       print('MySql connection has been closed')

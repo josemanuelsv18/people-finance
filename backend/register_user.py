@@ -1,5 +1,6 @@
 from database import db_connection
 import base64
+from tkinter import messagebox
 
 class RegisterUser:
     def __init__(self, name, surname, email, password):
@@ -24,12 +25,26 @@ class RegisterUser:
         encoded_password = encoded_password.decode('utf-8')
         return encoded_password
     
-    #create
+    def verify_email_ex(self):
+        obj_query = db_connection.DbConnector()
+        obj_query.connection_sql()
+        connection = obj_query.get_my_db()
+        cursor = connection.cursor()
+        query = "SELECT COUNT(*) FROM users WHERE email is %s"
+        cursor.execute(query,(self.email,))
+        result = cursor.fetchone()
+        if result[0]>0:
+            messagebox.showinfo("People Finance","This email alredy have an account")
+        cursor.close()
+        connection.close()
+
+    #insert new user in database
     def create_new_user(self):
         obj_db = db_connection.DbConnector()
         connection = None
         cursor = None
-        if not(not self.name and not self.email and not self.password):
+        if not(not self.name or not self.email or not self.password):
+            self.verify_email_ex()
             try:
                 obj_db.connection_sql()
                 connection = obj_db.get_my_db()
@@ -51,7 +66,5 @@ class RegisterUser:
                     connection.close()
                     print('Connection has been closed')
         else:
-            print("User data incomplete")
-            return False
-    
-    
+           messagebox.showinfo("People Finance","user data incomplete")
+           return False

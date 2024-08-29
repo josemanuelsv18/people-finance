@@ -3,6 +3,7 @@ import customtkinter
 from interface import interface_template
 from backend import register_user
 from tkinter import messagebox
+from interface import app_home
 
 class Register(interface_template.InterfaceTemplate):
     def __init__(self, frame):
@@ -51,5 +52,7 @@ class Register(interface_template.InterfaceTemplate):
         if obj_user_register.create_new_user():
             messagebox.showinfo("People Finance","Your user has been created succesfully")
             #From here user has to go to app homepage
+            obj_home_page = app_home.AppHome(self.name)
+            obj_home_page.interface_exe()
         else:
             messagebox.showinfo("People Finance","Your user could not be created")

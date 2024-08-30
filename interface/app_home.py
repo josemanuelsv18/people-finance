@@ -2,8 +2,9 @@ from interface import interface_template
 import customtkinter
 
 class AppHome(interface_template.InterfaceTemplate):
-    def __init__(self, frame):
+    def __init__(self, frame, id_user):
         super().__init__(frame)
+        self.id_user = id_user
 
     #Main page interface
     def interface_exe(self):
@@ -18,3 +19,4 @@ class AppHome(interface_template.InterfaceTemplate):
         #title
         label = customtkinter.CTkLabel(master=self.frame, text="People Finance", font=("Roboto", 24))
         label.pack(pady=12, padx=10)
+        label = customtkinter.CTkLabel(master=self.frame, text="Welcome ", font=("Roboto",24))

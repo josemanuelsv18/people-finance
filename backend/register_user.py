@@ -31,7 +31,7 @@ class RegisterUser:
         obj_query.connection_sql()
         connection = obj_query.get_my_db()
         cursor = connection.cursor()
-        query = "SELECT COUNT(*) FROM users WHERE email is %s"
+        query = "SELECT COUNT(*) FROM users WHERE email = %s"
         cursor.execute(query,(self.email,))
         result = cursor.fetchone()
         if result[0]>0:

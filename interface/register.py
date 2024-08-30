@@ -52,7 +52,7 @@ class Register(interface_template.InterfaceTemplate):
         if obj_user_register.create_new_user():
             messagebox.showinfo("People Finance","Your user has been created succesfully")
             #From here user has to go to app homepage
-            obj_home_page = app_home.AppHome(self.name)
+            obj_home_page = app_home.AppHome(self.frame, obj_user_register.get_id_new_user())
             obj_home_page.interface_exe()
         else:
             messagebox.showinfo("People Finance","Your user could not be created")

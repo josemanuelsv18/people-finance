@@ -8,14 +8,15 @@ class RegisterUser:
         self.surname = surname
         self.email = email
         self.password = password
+        self.id_new_user = None
 
     #getters
     def get_name(self):
         return self.name
     def get_surname(self):
         return self.surname
-    def get_email(self):
-        return self.email
+    def get_id_new_user(self):
+        return self.id_new_user
     #def get_password(self):
     #    return self.password
     #encodes password in base64 for security
@@ -53,6 +54,11 @@ class RegisterUser:
                 cursor.callproc('userRegister', [self.name, self.surname, self.email, self.encode_password()])
                 connection.commit()
                 print('new user created')
+                #Query to return new user id to automatically initiate sesion after user created
+                query = "SELECT id_user FROM users WHERE email = %s"
+                cursor.execute(query,(self.email,))
+                result = cursor.fetchone()
+                self.id_new_user = result[0]
                 return True            
             except:
                 print('Error in user data')

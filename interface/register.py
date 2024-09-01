@@ -1,17 +1,17 @@
 #register new user page
 import customtkinter
 from interface import interface_template
-from backend import register_user
+from backend import register_db
 from tkinter import messagebox
 from interface import app_home
 
 class Register(interface_template.InterfaceTemplate):
     def __init__(self, frame):
         super().__init__(frame)
-        self.name=''
-        self.surname=''
-        self.email=''
-        self.password=''
+        self.name=None
+        self.surname=None
+        self.email=None
+        self.password=None
     #Register Interface
     def interface_exe(self):
         #clean frame
@@ -48,11 +48,11 @@ class Register(interface_template.InterfaceTemplate):
 
     
     def db_register(self):
-        obj_user_register = register_user.RegisterUser(self.name.get(), self.surname.get(), self.email.get(), self.password.get())
-        if obj_user_register.create_new_user():
+        obj_user_register = register_db.RegisterUser(self.name.get(), self.surname.get(), self.email.get(), self.password.get())
+        if obj_user_register.user_login():
             messagebox.showinfo("People Finance","Your user has been created succesfully")
             #From here user has to go to app homepage
-            obj_home_page = app_home.AppHome(self.frame, obj_user_register.get_id_new_user())
+            obj_home_page = app_home.AppHome(self.frame, obj_user_register.get_user_id())
             obj_home_page.interface_exe()
         else:
             messagebox.showinfo("People Finance","Your user could not be created")

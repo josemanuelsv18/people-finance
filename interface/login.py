@@ -1,10 +1,14 @@
 #login page
 import customtkinter
 from interface import interface_template
+from backend import login_db
+from interface import app_home
 
 class Login(interface_template.InterfaceTemplate):
     def __init__(self, frame):
         super().__init__(frame)
+        self.email=None
+        self.password=None
     #login interface
     def interface_exe(self):
         #clean frame
@@ -21,11 +25,11 @@ class Login(interface_template.InterfaceTemplate):
         label = customtkinter.CTkLabel(master=self.frame,text="Login\nInsert your user", font=("roboto", 24))
         label.pack(pady=12, padx=10)
         #login input and button
-        email_entry = customtkinter.CTkEntry(self.frame, placeholder_text="Email")
-        email_entry.pack(pady=20, padx=0)
+        self.email = customtkinter.CTkEntry(self.frame, placeholder_text="Email")
+        self.email.pack(pady=20, padx=0)
 
-        password_entry = customtkinter.CTkEntry(self.frame, placeholder_text= "Password", show="*")
-        password_entry.pack(pady=20, padx=0)
+        self.password = customtkinter.CTkEntry(self.frame, placeholder_text= "Password", show="*")
+        self.password.pack(pady=20, padx=0)
 
         button = customtkinter.CTkButton(self.frame, text="Login", command=self.db_login)
         button.pack(pady=40, padx=20)
@@ -33,7 +37,8 @@ class Login(interface_template.InterfaceTemplate):
         button_return = customtkinter.CTkButton(self.frame, text='Return', command=self.home_return)
         button_return.pack(pady=0,padx=20)
 
-    def db_login():
+    def db_login(self):
         #connect with the database to check if the user and password exist
-        pass
-    
+        obj_login = login_db.LoginDB(name=None, surname=None, email=self.email, password=self.password)
+        if obj_login.user_login():
+            obj_home = app_home.AppHome(obj_login.get_user_id())

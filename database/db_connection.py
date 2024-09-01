@@ -4,7 +4,7 @@ from mysql.connector import Error
 
 class DbConnector:
     def __init__(self):
-        self.my_db = ''
+        self.my_db = None
     
     def get_my_db(self):
         return self.my_db
@@ -28,11 +28,11 @@ class DbConnector:
                 print('Failed to connect with the database')
         except:
             print("XML document couldn't be readed")
-        
-        #Closes connections in different class
-        
-        #finally:
-            #close connection if open
-        #    if self.my_db.is_connected():
-        #        self.my_db.close()
-        #       print('MySql connection has been closed')
+    
+    def close_connection(self, cursor, connection):
+        if cursor:
+            cursor.close()
+            print('Cursor has been closed')
+        if connection:
+            connection.close()
+            print('Connection has been closed')

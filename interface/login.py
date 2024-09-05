@@ -39,6 +39,6 @@ class Login(interface_template.InterfaceTemplate):
 
     def db_login(self):
         #connect with the database to check if the user and password exist
-        obj_login = login_db.LoginDB(name=None, surname=None, email=self.email, password=self.password)
+        obj_login = login_db.LoginDB(name=None, surname=None, email=self.email.get(), password=self.password.get())
         if obj_login.user_login():
             obj_home = app_home.AppHome(obj_login.get_user_id())

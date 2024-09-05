@@ -38,8 +38,6 @@ class RegisterUser(login_user_db.LoginUserDB):
         cursor = None
         if self.name and self.email and self.password:
             if self.verify_email():
-                #debug prints
-                print(self.name, self.surname, self.email, self.encode_password())
                 try:
                     obj_db.connection_sql()
                     connection = obj_db.get_my_db()

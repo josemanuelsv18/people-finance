@@ -34,7 +34,6 @@ class LoginDB(login_user_db.LoginUserDB):
             try:
                 decoded_bytes = base64.b64decode(self.user_password)
                 decoded_password = decoded_bytes.decode('utf-8')
-                print(decoded_password, self.password)
             except Exception as e:
                 print("Couldn't decode the password", e)
             if self.user_email == self.email and decoded_password == self.password:

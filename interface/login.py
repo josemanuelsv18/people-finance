@@ -3,6 +3,7 @@ import customtkinter
 from interface import interface_template
 from backend import login_db
 from interface import app_home
+from tkinter import messagebox
 
 class Login(interface_template.InterfaceTemplate):
     def __init__(self, frame):
@@ -41,4 +42,7 @@ class Login(interface_template.InterfaceTemplate):
         #connect with the database to check if the user and password exist
         obj_login = login_db.LoginDB(name=None, surname=None, email=self.email.get(), password=self.password.get())
         if obj_login.user_login():
-            obj_home = app_home.AppHome(obj_login.get_user_id())
+            obj_home = app_home.AppHome(self.frame,obj_login.get_user_id())
+            obj_home.interface_exe()
+        else:
+            messagebox.showinfo("People Finance","User couldn't log in")

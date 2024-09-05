@@ -25,7 +25,10 @@ class UserDB:
             result = cursor.fetchone()
             #Save result in user object
             if result:
-                obj_user = user.User(result[0],result[1],result[2],result[3], result[4])
+                if len(result) <= 4:
+                    obj_user = user.User(result[0],result[1],None,result[2], result[3])
+                else:
+                    obj_user = user.User(result[0],result[1],result[2],result[3], result[4])
                 return obj_user
             else:
                 messagebox.showinfo("People Finance","user not found")

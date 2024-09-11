@@ -1,10 +1,12 @@
 #finance management software with api and database connection
 import customtkinter
 from interface import home
+import os
 
 class Main:
     def __init__(self):
         self.root = customtkinter.CTk()
+        self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
     
     #main execution
     def main(self):
@@ -22,7 +24,10 @@ class Main:
         obj_home = home.Home(frame)
         obj_home.interface_exe()
         self.root.mainloop()
-
+    #method to close correctly the interface
+    def on_closing(self):
+        self.root.destroy()
+        os._exit(0)
 #main call
 if __name__ == '__main__':
     app= Main()

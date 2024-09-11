@@ -31,3 +31,6 @@ class AppHome(interface_template.InterfaceTemplate):
         label.pack(pady=12, padx=10)
         label_welcome = customtkinter.CTkLabel(master=self.frame, text=f"Welcome {self.obj_user.get_name()}", font=("Roboto",24))
         label_welcome.pack(pady=12, padx=10)
+        #return button
+        button_return = customtkinter.CTkButton(self.frame, text='Return', command=self.home_return)
+        button_return.pack(pady=0,padx=20)

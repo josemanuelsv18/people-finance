@@ -43,8 +43,10 @@ class LoginUserDB(ABC):
             connection = obj_db.get_my_db()
             cursor = connection.cursor()
             #Query to return new user id to automatically initiate sesion after user created
-            query = "SELECT id_user FROM users WHERE email = %s"
-            cursor.execute(query,(email,))
+            #query = "SELECT id_user FROM users WHERE email = %s"
+            #cursor.execute(query,(email,))
+            cursor.callproc('userLogin',email)
+            connection.commit()
             result = cursor.fetchone()
             return result
         except:

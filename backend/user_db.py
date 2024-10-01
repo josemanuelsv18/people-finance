@@ -15,12 +15,6 @@ class UserDB:
             obj_db.connection_sql()
             connection = obj_db.get_my_db()
             cursor = connection.cursor()
-            #query = """
-            #    SELECT id_user, name, email, registry_date
-            #    FROM users 
-            #   WHERE id_user = %s
-            #   """
-            #cursor.execute(query,(self.id_user,))
             cursor.callproc('userData',[self.id_user])
             for result in cursor.stored_results():
                 user_data = result.fetchone()

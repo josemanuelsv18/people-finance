@@ -45,8 +45,7 @@ class LoginUserDB(ABC):
             #Query to return new user id to automatically initiate sesion after user created
             #query = "SELECT id_user FROM users WHERE email = %s"
             #cursor.execute(query,(email,))
-            cursor.callproc('userLogin',email)
-            connection.commit()
+            cursor.callproc('userLogin',[email])
             result = cursor.fetchone()
             return result
         except:

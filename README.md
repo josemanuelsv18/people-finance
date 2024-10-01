@@ -1,6 +1,6 @@
 # People Finance
 
-People Finance es una aplicación de simulador de finanzas personales desarrollada en Python. Esta herramienta permite a los usuarios gestionar y analizar sus ingresos y gastos, ayudándoles a entender y planificar su situación financiera de manera efectiva.
+People Finance es una aplicación web para el manejo de finanzas personales desarrollada con nuxt en el Frontend y Python en el backend. Esta herramienta permite a los usuarios gestionar y analizar sus ingresos y gastos, ayudándoles a entender y planificar su situación financiera de manera efectiva.
 
 ## Características
 

@@ -18,10 +18,9 @@ class LoginDB(login_user_db.LoginUserDB):
                 obj_db.connection_sql()
                 connection = obj_db.get_my_db()
                 cursor = connection.cursor()
-                #query exec
-                query = "SELECT email, password FROM users WHERE email = %s"
-                cursor.execute(query,(self.email,))
-                result = cursor.fetchone()
+                cursor.callproc('userVerification', [self.email])
+                for stored_results in cursor.stored_results():   
+                    result = stored_results.fetchone()
                 self.user_email = result[0]
                 self.user_password = result[1]  
             except Exception as ex:

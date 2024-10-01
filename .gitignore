@@ -1,0 +1,21 @@
+*.pyc
+# Ignorar el directorio pycache
+__pycache__/
+*.py[cod]
+*.pyc
+
+# Ignorar archivos de configuración de entornos virtuales
+venv/
+.env/
+*.env
+
+# Archivos de log
+*.log
+
+# Ignorar archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+# Ignorar configuraciones de IDEs y editores
+.vscode/
+.idea/

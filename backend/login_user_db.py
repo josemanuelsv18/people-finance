@@ -42,12 +42,10 @@ class LoginUserDB(ABC):
             obj_db.connection_sql()
             connection = obj_db.get_my_db()
             cursor = connection.cursor()
-            #Query to return new user id to automatically initiate sesion after user created
-            #query = "SELECT id_user FROM users WHERE email = %s"
-            #cursor.execute(query,(email,))
             cursor.callproc('userLogin',[email])
-            result = cursor.fetchone()
-            return result
+            for result in cursor.stored_results():
+                user = result.fetchone()
+                return user
         except:
             self.show_message('Email not found in the database')
         finally:
